@@ -127,8 +127,8 @@ function App() {
         peerCount={peers.size}
       />
 
-      <main className="flex-1 overflow-y-auto custom-scrollbar flex flex-col items-center justify-center min-h-0">
-        <div className="w-full max-w-2xl px-6 py-12 flex flex-col items-center justify-center gap-16">
+      <main className="flex-1 flex flex-col items-center justify-center p-6 min-h-0 overflow-hidden">
+        <div className="w-full max-w-2xl flex flex-col items-center justify-center gap-16">
 
           {/* File Staging / Drop Zone */}
           <section className="w-full flex flex-col gap-6 scale-110">

@@ -20,6 +20,7 @@ const localIp = getLocalIP();
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/void-sync/',
   plugins: [react(), tailwindcss()],
   define: {
     __LOCAL_IP__: JSON.stringify(localIp),
