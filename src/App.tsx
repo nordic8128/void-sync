@@ -127,13 +127,13 @@ function App() {
         peerCount={peers.size}
       />
 
-      <main className="flex-1 overflow-y-auto custom-scrollbar pt-20 flex flex-col items-center">
-        <div className="min-h-full w-full max-w-2xl px-6 py-12 flex flex-col justify-center gap-16">
+      <main className="flex-1 overflow-y-auto custom-scrollbar flex flex-col items-center justify-center min-h-0">
+        <div className="w-full max-w-2xl px-6 py-12 flex flex-col items-center justify-center gap-16">
 
           {/* File Staging / Drop Zone */}
-          <section className="flex flex-col gap-6 scale-110">
+          <section className="w-full flex flex-col gap-6 scale-110">
             <div
-              className={`group relative border-2 border-dashed rounded-2xl p-24 py-32 text-center transition-all cursor-pointer shadow-[0_0_30px_rgba(0,255,65,0.02)] ${isDragging || selectedFile ? 'border-[#00FF41] bg-[#00FF4108] glow-border' : 'border-[#00FF4120] hover:border-[#00FF4180] hover:bg-[#00FF4102]'
+              className={`group relative w-full border-2 border-dashed rounded-2xl p-24 py-32 text-center transition-all cursor-pointer shadow-[0_0_30px_rgba(0,255,65,0.02)] ${isDragging || selectedFile ? 'border-[#00FF41] bg-[#00FF4108] glow-border' : 'border-[#00FF4120] hover:border-[#00FF4180] hover:bg-[#00FF4102]'
                 }`}
               onClick={() => fileInputRef.current?.click()}
             >    {!selectedFile ? (
