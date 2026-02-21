@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: 'JetBrains Mono', 'Roboto Mono', 'Courier New', monospace;
+  --color-terminal: #00FF41;
+  --color-terminal-dim: #00CC33;
+  --color-terminal-dark: #003300;
+  --color-void: #050505;
+  --color-void-light: #0A0A0A;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #050505;
+  color: #00FF41;
+}
+
+/* Selection */
+::selection {
+  background: #00FF4130;
+  color: #00FF41;
+}
+
+/* Custom Scrollbar */
+
+/* Scrollbar — invisible */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00FF4140;
+}
+
+/* ───── Terminal Glow Utilities ───── */
+
+.glow-text {
+  text-shadow: 0 0 8px #00FF4180, 0 0 20px #00FF4140;
+}
+
+.glow-box {
+  box-shadow: 0 0 6px #00FF4130, inset 0 0 6px #00FF4108;
+}
+
+.glow-box-strong {
+  box-shadow: 0 0 12px #00FF4160, 0 0 30px #00FF4120, inset 0 0 8px #00FF4110;
+}
+
+.glow-border {
+  border-color: #00FF4140;
+}
+
+.glow-border:hover {
+  border-color: #00FF41;
+  box-shadow: 0 0 12px #00FF4140;
+}
+
+/* ───── Animations ───── */
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 1;
+  }
+
+  93% {
+    opacity: 0.8;
+  }
+
+  94% {
+    opacity: 1;
+  }
+
+  96% {
+    opacity: 0.9;
+  }
+
+  97% {
+    opacity: 1;
+  }
+}
+
+@keyframes glitch-shift {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-2px);
+  }
+
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes terminal-cursor {
+
+  0%,
+  100% {
+    border-right-color: #00FF41;
+  }
+
+  50% {
+    border-right-color: transparent;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-scanline {
+  animation: scanline 8s linear infinite;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.animate-flicker {
+  animation: flicker 4s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-cursor {
+  animation: terminal-cursor 1s step-end infinite;
+}
+
+/* CRT scanline overlay */
+.crt-overlay::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 999;
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      #00FF4103 2px,
+      #00FF4103 4px);
+}
+
+/* Input override */
+input {
+  font-family: var(--font-mono);
+  caret-color: #00FF41;
+}
+
+input::placeholder {
+  color: #00FF4140;
+}
